@@ -1,0 +1,102 @@
+/* Some CSS Setup - nothing to do with flexbox */
+html {
+    box-sizing: border-box;
+}
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  }
+  
+  a {
+    color:white;
+  }
+  
+  .plan ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .plan ul li {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding:10px;
+  }
+  
+  .plan ul li:last-child {
+    border-bottom: 0;
+  }
+  
+  .plan a {
+    text-decoration: none;
+    background:#FEFF00;
+    padding:10px;
+    color:black;
+    border-radius:4px;
+  }
+  
+  
+  .plan h2 {
+    text-transform: uppercase;
+    color:white;
+    letter-spacing: 2px;
+    text-shadow:3px 3px 0 rgba(0,0,0,0.1);
+  }
+  
+  .price {
+    font-size: 50px;
+    font-family: serif;
+    margin: 10px 0;
+  }
+  
+  
+  /* Flex Container!!! */
+  .pricing-grid {
+    /* border: 2px solid red; */
+    max-width:750px;
+    margin: 0 auto;
+    display:flex; 
+    align-items:center; 
+    /* By default the align-items is set to stretch. 
+                        This means that the height of the flex items will be decided based on the highest flex-item 
+                        This also means that flex items with different content may have less or more vertical space due to stretched height.*/
+  }
+  
+  .plan {
+    background:rgba(255,255,255,0.2);
+    margin:20px;
+    padding:20px;
+    border-radius: 4px;
+    text-align: center;
+    
+    flex:1; 
+    /* This when set to some value, makes flex-items in proportions. As an example, "flex:1" will make all siblings equal width. 
+            Note that this property is applied on this plan class in conjunction with its parent which should be flex container.
+            Also note that unlike height of the flex items which is decided by the tallest children, width is 
+            NOT decided by the widest flex item. Each flex-item takes as much width as is needed. 
+            Hence to make them equal width we set the flex value to 1*/
+    display:flex; /* This property is applied only on the flex-container. 
+                    Hence plan class can behave both as a child (see "flex:1" above) and a parent for it's own flex items*/
+    flex-wrap:wrap;
+    /* This property is also applied only on the flex-container. 
+                    Hence it's children wrap instead of being side by side*/
+  }
+  
+  .plan > * {
+    /* flex:1 1 100%; */
+    flex-basis: 100%;
+    /* flex: 1;   */
+    /*If we don't set flex-basis and only set "flex:1" here then all the children of plan 
+                    will get wrapped as well as try to adjust side by side as much as possible. We don't want that. 
+                    We want plan's children to take up 100% of the available width hence we set flex-basis above*/
+  }
+
+  
+  /* .plan .cta {
+    align-self:flex-end;
+  } */
